@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,13 +27,18 @@ public class Event implements Serializable {
   private Long id;
 
   @ManyToOne
-  @JoinColumn(name = "storageId")
-  private Storage storage;
+  @JoinColumn(name = "positionId")
+  private Position position;
+
+  @ManyToOne
+  @JoinColumn(name = "itemId")
+  private Item item;
 
   @Column
   private Long quantity;
 
   @Column
+  @Enumerated(EnumType.STRING)
   private EventType type;
 
   @Column
@@ -45,12 +52,20 @@ public class Event implements Serializable {
     this.id = id;
   }
 
-  public Storage getStorage() {
-    return storage;
+  public Position getPosition() {
+    return position;
   }
 
-  public void setStorage(Storage storage) {
-    this.storage = storage;
+  public void setPosition(Position position) {
+    this.position = position;
+  }
+
+  public Item getItem() {
+    return item;
+  }
+
+  public void setItem(Item item) {
+    this.item = item;
   }
 
   public Long getQuantity() {

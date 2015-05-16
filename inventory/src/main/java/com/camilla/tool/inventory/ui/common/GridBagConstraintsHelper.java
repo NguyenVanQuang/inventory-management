@@ -55,7 +55,20 @@ public final class GridBagConstraintsHelper {
       return this;
     }
 
-    public Builder insets(Insets insets) {
+    public Builder insets(int inset) {
+      Insets insets = new Insets(inset, inset, inset, inset);
+      c.insets = insets;
+      return this;
+    }
+
+    public Builder insets(int topAndBottom, int leftAndRight) {
+      Insets insets = new Insets(topAndBottom, leftAndRight, topAndBottom, leftAndRight);
+      c.insets = insets;
+      return this;
+    }
+
+    public Builder insets(int top, int left, int bottom, int right) {
+      Insets insets = new Insets(top, left, bottom, right);
       c.insets = insets;
       return this;
     }
